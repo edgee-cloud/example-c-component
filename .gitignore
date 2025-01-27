@@ -1,0 +1,6 @@
+# generated files
+internal/
+
+# output
+dc_component.wasm
+dc_component_temp.wasm
