@@ -7,17 +7,17 @@
     You should set your request parameters in the `ret` struct and return true if the request was successful.
 */
 
-bool exports_edgee_protocols_data_collection_page(exports_edgee_protocols_data_collection_event_t *e, exports_edgee_protocols_data_collection_dict_t *cred, exports_edgee_protocols_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
+bool exports_edgee_protocols_data_collection_page(exports_edgee_protocols_data_collection_event_t *e, exports_edgee_protocols_data_collection_dict_t *settings, exports_edgee_protocols_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
     /*
-        If your credentials are set as:
+        If your settings are set as:
             [[components.data_collection]]
-            name = "my_component"
-            component = "outpout.wasm"
-            credentials.test_project_id = "123456789"
-            credentials.test_write_key = "abcdefg"
+            id = "my_component"
+            component = "output.wasm"
+            settings.test_project_id = "123456789"
+            settings.test_write_key = "abcdefg"
         Then the following code:
-            for (int i = 0; i < cred.len; i++) {
-                printf("%s: %s\n", cred.ptr[i].f0.ptr, cred.ptr[i].f1.ptr);
+            for (int i = 0; i < settings.len; i++) {
+                printf("%s: %s\n", settings.ptr[i].f0.ptr, settings.ptr[i].f1.ptr);
             }
         Will print:
             test_project_id: 123456789
@@ -34,10 +34,10 @@ bool exports_edgee_protocols_data_collection_page(exports_edgee_protocols_data_c
     ret->headers.len = 1;
     data_collection_string_dup(&ret->headers.ptr[0].f0, "Content-Type");
     data_collection_string_dup(&ret->headers.ptr[0].f1, "application/json");
-
+    ret->forward_client_headers = true;
     return true;
 }
-bool exports_edgee_protocols_data_collection_track(exports_edgee_protocols_data_collection_event_t *e, exports_edgee_protocols_data_collection_dict_t *cred, exports_edgee_protocols_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
+bool exports_edgee_protocols_data_collection_track(exports_edgee_protocols_data_collection_event_t *e, exports_edgee_protocols_data_collection_dict_t *settings, exports_edgee_protocols_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
     data_collection_string_dup(&ret->url, "https://example.com");
 
     data_collection_string_dup(&ret->body, "{\"key\":\"value\"}");
@@ -48,9 +48,10 @@ bool exports_edgee_protocols_data_collection_track(exports_edgee_protocols_data_
     ret->headers.len = 1;
     data_collection_string_dup(&ret->headers.ptr[0].f0, "Content-Type");
     data_collection_string_dup(&ret->headers.ptr[0].f1, "application/json");
+    ret->forward_client_headers = true;
     return true;
 }
-bool exports_edgee_protocols_data_collection_user(exports_edgee_protocols_data_collection_event_t *e, exports_edgee_protocols_data_collection_dict_t *cred, exports_edgee_protocols_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
+bool exports_edgee_protocols_data_collection_user(exports_edgee_protocols_data_collection_event_t *e, exports_edgee_protocols_data_collection_dict_t *settings, exports_edgee_protocols_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
     data_collection_string_dup(&ret->url, "https://example.com");
 
     data_collection_string_dup(&ret->body, "{\"key\":\"value\"}");
@@ -61,5 +62,6 @@ bool exports_edgee_protocols_data_collection_user(exports_edgee_protocols_data_c
     ret->headers.len = 1;
     data_collection_string_dup(&ret->headers.ptr[0].f0, "Content-Type");
     data_collection_string_dup(&ret->headers.ptr[0].f1, "application/json");
+    ret->forward_client_headers = true;
     return true;
 }
