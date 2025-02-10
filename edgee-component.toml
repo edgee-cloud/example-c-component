@@ -3,7 +3,11 @@ manifest_version = 1
 [package]
 name = "example-c-component"
 version = "1.0.0"
-
+category = "data-collection"
+subcategory = "analytics"
+description = "Example C component for data collection"
+documentation = "https://github.com/edgee-cloud/example-c-component"
+repository = "https://github.com/edgee-cloud/example-c-component"
 wit-world-version = "0.4.0"
 
 [package.build]
