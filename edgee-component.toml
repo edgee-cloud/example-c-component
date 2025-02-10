@@ -4,7 +4,7 @@ manifest_version = 1
 name = "example-c-component"
 version = "1.0.0"
 
-wit-world-version = "0.3.0"
+wit-world-version = "0.4.0"
 
 [package.build]
 command = "mkdir -p internal && wit-bindgen c ./wit --out-dir internal && gcc dc_component.c internal/data_collection.c  -o dc_component_temp.wasm -mexec-model=reactor -Os && wasm-tools component new dc_component_temp.wasm internal/data_collection_component_type.o -o dc_component.wasm && rm -rf dc_component_temp.wasm"
