@@ -1,6 +1,6 @@
-manifest_version = 1
+manifest-version = 1
 
-[package]
+[component]
 name = "example-c-component"
 version = "1.0.0"
 category = "data-collection"
@@ -10,6 +10,10 @@ documentation = "https://github.com/edgee-cloud/example-c-component"
 repository = "https://github.com/edgee-cloud/example-c-component"
 wit-world-version = "0.4.0"
 
-[package.build]
+[component.build]
 command = "$(CC) dc_component.c internal/data_collection.c internal/data_collection_component_type.o -o /dev/stdout -mexec-model=reactor -Os | wasm-tools component new -o dc_component.wasm"
 output_path = "./dc_component.wasm"
+
+[component.settings.example]
+title = "Example Config Field"
+type = "string"
