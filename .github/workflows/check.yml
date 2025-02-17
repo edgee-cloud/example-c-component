@@ -30,9 +30,12 @@ jobs:
             - name: Install edgee
               uses: edgee-cloud/install-edgee-cli@v0.1.0
 
+            - name: Setup project
+              run: make setup
+
             - name: Build
               run: |
-                  edgee components build
+                  CC=clang edgee components build
 
             - name: Verify .wasm file exists
               run: |
