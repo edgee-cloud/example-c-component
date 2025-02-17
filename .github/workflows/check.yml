@@ -31,11 +31,11 @@ jobs:
               uses: edgee-cloud/install-edgee-cli@v0.1.0
 
             - name: Setup project
-              run: make setup
+              run: |
+                  make setup
+                  echo "CC=clang" >> $GITHUB_ENV
 
-            - name: Build``
-              env:
-                  CC: clang
+            - name: Build
               run: |
                   edgee components build
 
