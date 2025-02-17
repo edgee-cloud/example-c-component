@@ -31,6 +31,22 @@ jobs:
             - name: Install edgee
               uses: edgee-cloud/install-edgee-cli@v0.1.0
 
+            - name: Install GLIBC 2.38
+              run: |
+                  sudo apt update
+                  sudo apt install -y build-essential manpages-dev
+                  wget http://ftp.gnu.org/gnu/libc/glibc-2.38.tar.gz
+                  tar -xvzf glibc-2.38.tar.gz
+                  cd glibc-2.38
+                  mkdir build
+                  cd build
+                  ../configure --prefix=/opt/glibc-2.38
+                  make -j$(nproc)
+                  sudo make install
+                  echo 'export LD_LIBRARY_PATH=/opt/glibc-2.38/lib:$LD_LIBRARY_PATH' >> $HOME/.bashrc
+                  source $HOME/.bashrc
+                  ldd --version
+
             - name: Build
               run: |
                   edgee components build
