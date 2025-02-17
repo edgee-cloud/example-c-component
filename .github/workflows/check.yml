@@ -28,9 +28,6 @@ jobs:
             - name: Install wasm tooling
               run: CC=clang cargo install wit-bindgen-cli wasm-tools --locked
 
-            - name: Install edgee
-              uses: edgee-cloud/install-edgee-cli@v0.1.0
-
             - name: Install GLIBC 2.38
               run: |
                   sudo apt update
@@ -46,6 +43,9 @@ jobs:
                   echo 'export LD_LIBRARY_PATH=/opt/glibc-2.38/lib:$LD_LIBRARY_PATH' >> $HOME/.bashrc
                   source $HOME/.bashrc
                   ldd --version
+
+            - name: Install edgee
+              uses: edgee-cloud/install-edgee-cli@v0.1.0
 
             - name: Build
               run: |
