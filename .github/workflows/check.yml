@@ -33,9 +33,11 @@ jobs:
             - name: Setup project
               run: make setup
 
-            - name: Build
+            - name: Build``
+              env:
+                  CC: clang
               run: |
-                  CC=clang edgee components build
+                  edgee components build
 
             - name: Verify .wasm file exists
               run: |
