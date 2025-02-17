@@ -9,16 +9,15 @@ jobs:
     test:
         name: test
         runs-on: ubuntu-latest
-        container:
-            image: ghcr.io/webassembly/wasi-sdk:latest
 
         steps:
             - name: Checkout
               uses: actions/checkout@v4
+
             - name: "Set up C component build system"
               run: |
-                  apt-get update
-                  apt install curl clang build-essential -y
+                  sudo apt-get update
+                  sudo apt install curl clang build-essential -y
 
             - name: Set up minimal stable Rust toolchain
               uses: actions-rust-lang/setup-rust-toolchain@v1
@@ -27,21 +26,6 @@ jobs:
 
             - name: Install wasm tooling
               run: CC=clang cargo install wit-bindgen-cli wasm-tools --locked
-
-            - name: Install GLIBC 2.38
-              run: |
-                  apt install -y wget tar build-essential manpages-dev gawk bison compiler
-                  wget http://ftp.gnu.org/gnu/libc/glibc-2.38.tar.gz
-                  tar -xvzf glibc-2.38.tar.gz
-                  cd glibc-2.38
-                  mkdir build
-                  cd build
-                  ../configure --prefix=/opt/glibc-2.38
-                  make -j$(nproc)
-                  make install
-                  echo 'export LD_LIBRARY_PATH=/opt/glibc-2.38/lib:$LD_LIBRARY_PATH' >> $HOME/.bashrc
-                  source $HOME/.bashrc
-                  ldd --version
 
             - name: Install edgee
               uses: edgee-cloud/install-edgee-cli@v0.1.0
