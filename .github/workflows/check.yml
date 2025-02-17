@@ -15,7 +15,7 @@ jobs:
               uses: actions/checkout@v4
 
             - name: Install Curl
-              run: apt-get update && apt-get install -y curl
+              run: sudo apt-get update && sudo apt-get install -y curl
 
             - name: Install edgee
               uses: edgee-cloud/install-edgee-cli@v0.1.0
