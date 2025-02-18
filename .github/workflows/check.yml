@@ -18,16 +18,16 @@ jobs:
 
             - name: "Set up C component build system"
               run: |
-                  sudo apt-get update
-                  sudo apt install curl -y
+                  apt-get update
+                  apt install curl -y
 
             - name: Install edgee
               uses: edgee-cloud/install-edgee-cli@v0.1.0
 
             - name: "Set up C component build system"
               run: |
-                  sudo apt-get update
-                  sudo apt install clang build-essential curl -y
+                  apt-get update
+                  apt install clang build-essential curl -y
 
             - name: Set up minimal stable Rust toolchain
               uses: actions-rust-lang/setup-rust-toolchain@v1
