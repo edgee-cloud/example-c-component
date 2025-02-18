@@ -18,7 +18,7 @@ Requirements:
 - [WASI SDK](https://github.com/webassembly/wasi-sdk)
 - [wasm-tools](https://github.com/bytecodealliance/wasm-tools)
 - [wit-bindgen](https://github.com/bytecodealliance/wit-bindgen#cli-installation)
-- [edgee-cli] (https://github.com/edgee-cloud/edgee)
+- [edgee-cli](https://github.com/edgee-cloud/edgee)
 
 ```shell
 $ make setup
