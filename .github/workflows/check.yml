@@ -19,7 +19,7 @@ jobs:
             - name: "Set up C component build system"
               run: |
                   apt-get update
-                  apt install curl clang build-essential -y
+                  apt install curl clang build-essential sudo git libssl-dev -y
 
             - name: Set up minimal stable Rust toolchain
               uses: actions-rust-lang/setup-rust-toolchain@v1
@@ -29,7 +29,21 @@ jobs:
             - name: Install wasm tooling
               run: CC=clang cargo install wit-bindgen-cli wasm-tools --locked
 
-            - name: Build component
+            - name: Install edgee
+              uses: edgee-cloud/install-edgee-cli@v0.2.0
+              env:
+                  OPENSSL_LIB_DIR: /usr/lib/i386-linux-gnu/
+                  OPENSSL_INCLUDE_DIR: /usr/include/openssl/
+              with:
+                  build: true
+
+            - name: Build
               run: |
-                  make setup
-                  make build-no-edgee
+                  edgee components build
+
+            - name: Verify .wasm file exists
+              run: |
+                  if [ ! -f "./dc_component.wasm" ]; then
+                    echo "❌ Error: dc_component.wasm not found" >&2
+                    exit 1
+                  fi
