@@ -11,7 +11,7 @@ repository = "https://github.com/edgee-cloud/example-c-component"
 wit-world-version = "0.4.0"
 
 [component.build]
-command = "clang dc_component.c internal/data_collection.c  -o /dev/stdout -mexec-model=reactor -Os | wasm-tools component new -o dc_component.wasm"
+command = "clang dc_component.c internal/data_collection.c internal/data_collection_component_type.o | wasm-tools component new -o dc_component.wasm"
 output_path = "./dc_component.wasm"
 
 [component.settings.example]
