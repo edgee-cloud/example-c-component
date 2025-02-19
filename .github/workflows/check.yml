@@ -10,7 +10,7 @@ jobs:
         name: test
         runs-on: ubuntu-latest
         container:
-            image: wasi-sdk:latest
+            image: ghcr.io/webassembly/wasi-sdk:latest
 
         steps:
             - name: Checkout
