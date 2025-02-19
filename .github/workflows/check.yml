@@ -31,6 +31,9 @@ jobs:
 
             - name: Install edgee
               uses: edgee-cloud/install-edgee-cli@v0.2.0
+              env:
+                  OPENSSL_LIB_DIR: /usr/lib/i386-linux-gnu/
+                  OPENSSL_INCLUDE_DIR: /usr/include/openssl/
               with:
                   build: true
 
