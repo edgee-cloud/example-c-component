@@ -19,7 +19,7 @@ jobs:
             - name: "Set up C component build system"
               run: |
                   apt-get update
-                  apt install curl clang build-essential sudo git -y
+                  apt install curl clang build-essential sudo git libssl-dev -y
 
             - name: Set up minimal stable Rust toolchain
               uses: actions-rust-lang/setup-rust-toolchain@v1
