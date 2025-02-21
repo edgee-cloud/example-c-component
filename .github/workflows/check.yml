@@ -32,6 +32,8 @@ jobs:
 
             - name: Install edgee
               uses: edgee-cloud/install-edgee-cli@v0.1.0
+              with:
+                build: true
 
             - name: Build component
               run: edgee components build
