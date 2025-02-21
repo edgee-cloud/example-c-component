@@ -11,7 +11,7 @@ struct component_settings {
     data_collection_string_t example;
 };
 
-struct component_settings parse_settings(exports_edgee_protocols_data_collection_dict_t *settings) {
+struct component_settings parse_settings(exports_edgee_components_data_collection_dict_t *settings) {
     struct component_settings ret;
     for (int i = 0; i < settings->len; i++) {
         if (settings->ptr[i].f0.len == 0) {
@@ -24,13 +24,13 @@ struct component_settings parse_settings(exports_edgee_protocols_data_collection
     return ret;
 }
 
-bool exports_edgee_protocols_data_collection_page(exports_edgee_protocols_data_collection_event_t *e, exports_edgee_protocols_data_collection_dict_t *settings, exports_edgee_protocols_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
+bool exports_edgee_components_data_collection_page(exports_edgee_components_data_collection_event_t *e, exports_edgee_components_data_collection_dict_t *settings, exports_edgee_components_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
     struct component_settings parsed_settings = parse_settings(settings);
     data_collection_string_dup(&ret->url, "https://example.com");
 
     data_collection_string_dup(&ret->body, "{\"key\":\"value\"}");
 
-    ret->method = EXPORTS_EDGEE_PROTOCOLS_DATA_COLLECTION_HTTP_METHOD_POST;
+    ret->method = EXPORTS_EDGEE_components_DATA_COLLECTION_HTTP_METHOD_POST;
 
     ret->headers.ptr = malloc(2 * sizeof(data_collection_tuple2_string_string_t));
     ret->headers.len = 2;
@@ -43,13 +43,13 @@ bool exports_edgee_protocols_data_collection_page(exports_edgee_protocols_data_c
     ret->forward_client_headers = true;
     return true;
 }
-bool exports_edgee_protocols_data_collection_track(exports_edgee_protocols_data_collection_event_t *e, exports_edgee_protocols_data_collection_dict_t *settings, exports_edgee_protocols_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
+bool exports_edgee_components_data_collection_track(exports_edgee_components_data_collection_event_t *e, exports_edgee_components_data_collection_dict_t *settings, exports_edgee_components_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
     struct component_settings parsed_settings = parse_settings(settings);
     data_collection_string_dup(&ret->url, "https://example.com");
 
     data_collection_string_dup(&ret->body, "{\"key\":\"value\"}");
 
-    ret->method = EXPORTS_EDGEE_PROTOCOLS_DATA_COLLECTION_HTTP_METHOD_POST;
+    ret->method = EXPORTS_EDGEE_components_DATA_COLLECTION_HTTP_METHOD_POST;
 
     ret->headers.ptr = malloc(2 * sizeof(data_collection_tuple2_string_string_t));
     ret->headers.len = 2;
@@ -62,13 +62,13 @@ bool exports_edgee_protocols_data_collection_track(exports_edgee_protocols_data_
     ret->forward_client_headers = true;
     return true;
 }
-bool exports_edgee_protocols_data_collection_user(exports_edgee_protocols_data_collection_event_t *e, exports_edgee_protocols_data_collection_dict_t *settings, exports_edgee_protocols_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
+bool exports_edgee_components_data_collection_user(exports_edgee_components_data_collection_event_t *e, exports_edgee_components_data_collection_dict_t *settings, exports_edgee_components_data_collection_edgee_request_t *ret, data_collection_string_t *err) {
     struct component_settings parsed_settings = parse_settings(settings);
     data_collection_string_dup(&ret->url, "https://example.com");
 
     data_collection_string_dup(&ret->body, "{\"key\":\"value\"}");
 
-    ret->method = EXPORTS_EDGEE_PROTOCOLS_DATA_COLLECTION_HTTP_METHOD_POST;
+    ret->method = EXPORTS_EDGEE_components_DATA_COLLECTION_HTTP_METHOD_POST;
 
     ret->headers.ptr = malloc(2 * sizeof(data_collection_tuple2_string_string_t));
     ret->headers.len = 2;
