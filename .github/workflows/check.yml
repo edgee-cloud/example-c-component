@@ -30,6 +30,9 @@ jobs:
             - name: Generate code
               run: make setup
 
+            - name: Install edgee
+              uses: edgee-cloud/install-edgee-cli@v0.1.0
+
             - name: Build component
               run: edgee components build
 
