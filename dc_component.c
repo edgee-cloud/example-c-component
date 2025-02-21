@@ -30,7 +30,7 @@ bool exports_edgee_components_data_collection_page(exports_edgee_components_data
 
     data_collection_string_dup(&ret->body, "{\"key\":\"value\"}");
 
-    ret->method = EXPORTS_EDGEE_components_DATA_COLLECTION_HTTP_METHOD_POST;
+    ret->method = EXPORTS_EDGEE_COMPONENTS_DATA_COLLECTION_HTTP_METHOD_POST;
 
     ret->headers.ptr = malloc(2 * sizeof(data_collection_tuple2_string_string_t));
     ret->headers.len = 2;
@@ -49,7 +49,7 @@ bool exports_edgee_components_data_collection_track(exports_edgee_components_dat
 
     data_collection_string_dup(&ret->body, "{\"key\":\"value\"}");
 
-    ret->method = EXPORTS_EDGEE_components_DATA_COLLECTION_HTTP_METHOD_POST;
+    ret->method = EXPORTS_EDGEE_COMPONENTS_DATA_COLLECTION_HTTP_METHOD_POST;
 
     ret->headers.ptr = malloc(2 * sizeof(data_collection_tuple2_string_string_t));
     ret->headers.len = 2;
@@ -68,7 +68,7 @@ bool exports_edgee_components_data_collection_user(exports_edgee_components_data
 
     data_collection_string_dup(&ret->body, "{\"key\":\"value\"}");
 
-    ret->method = EXPORTS_EDGEE_components_DATA_COLLECTION_HTTP_METHOD_POST;
+    ret->method = EXPORTS_EDGEE_COMPONENTS_DATA_COLLECTION_HTTP_METHOD_POST;
 
     ret->headers.ptr = malloc(2 * sizeof(data_collection_tuple2_string_string_t));
     ret->headers.len = 2;
