@@ -27,7 +27,21 @@ jobs:
             - name: Install wasm tooling
               run: CC=clang cargo install wit-bindgen-cli wasm-tools --locked
 
+            - name: Generate code
+              run: make setup
+
+            #- name: Install edgee
+            #  uses: edgee-cloud/install-edgee-cli@v0.2.0
+            #  with:
+            #    build: true
+            #- name: Build component
+            #  run: edgee components build
             - name: Build component
+              run: make build-no-edgee
+
+            - name: Verify .wasm file exists
               run: |
-                  make setup
-                  make build-no-edgee
+                if [ ! -f "./dc_component.wasm" ]; then
+                  echo "❌ Error: dc_component.wasm not found" >&2
+                  exit 1
+                fi
