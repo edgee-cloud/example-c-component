@@ -31,12 +31,13 @@ jobs:
               run: make setup
 
             - name: Install edgee
-              uses: edgee-cloud/install-edgee-cli@v0.1.0
+              uses: edgee-cloud/install-edgee-cli@v0.2.0
               with:
                 build: true
-
             - name: Build component
               run: edgee components build
+            # - name: Build component
+            #  run: make build-no-edgee
 
             - name: Verify .wasm file exists
               run: |
