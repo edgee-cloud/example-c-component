@@ -8,10 +8,11 @@ subcategory = "analytics"
 description = "Example C component for data collection"
 documentation = "https://github.com/edgee-cloud/example-c-component"
 repository = "https://github.com/edgee-cloud/example-c-component"
+language = "C"
 wit-world-version = "0.5.0"
 
 [component.build]
-command = "$(CC) dc_component.c internal/data_collection.c internal/data_collection_component_type.o -o /dev/stdout -mexec-model=reactor -Os | wasm-tools component new -o dc_component.wasm"
+command = "$CC dc_component.c internal/data_collection.c internal/data_collection_component_type.o -mexec-model=reactor -Os && wasm-tools component new -o dc_component.wasm a.out"
 output_path = "./dc_component.wasm"
 
 [component.settings.example]
