@@ -12,7 +12,7 @@ language = "C"
 wit-version = "1.0.0"
 
 [component.build]
-command = "$CC dc_component.c internal/data_collection.c internal/data_collection_component_type.o -mexec-model=reactor -Os && wasm-tools component new -o dc_component.wasm a.out"
+command = "mkdir -p internal && (cd internal && wit-bindgen c ../.edgee/wit && cd ..) && $CC dc_component.c internal/data_collection.c internal/data_collection_component_type.o -mexec-model=reactor -Os && wasm-tools component new -o dc_component.wasm a.out"
 output_path = "./dc_component.wasm"
 
 [component.settings.example]
