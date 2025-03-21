@@ -8,17 +8,8 @@ help:
 		| sort \
 		| sed -e "s/^Makefile://" -e "s///" \
 		| awk 'BEGIN { FS = ":.*?## " }; { printf "\033[36m%-30s\033[0m %s\n", $$1, $$2 }'
-internal:
-	mkdir -p internal
-	( cd internal && wit-bindgen c ../.edgee/wit )
-setup: internal ## setup development environment
-
 build:
 	edgee components build
-
-build-no-edgee: setup ## build component
-	$(CC) dc_component.c internal/data_collection.c internal/data_collection_component_type.o -mexec-model=reactor -Os
-	wasm-tools component new -o dc_component.wasm a.out
 
 clean: ## clean build artifacts
 	rm -rf dc_component.wasm
